@@ -8,6 +8,7 @@ void main() {
   runApp(new MaterialApp(
     title: 'JULO',
     home: Test(),
+    theme: new ThemeData(fontFamily: 'Montserrat'),
     routes: <String, WidgetBuilder>{
       '/landing': (BuildContext context) => new Landing()
     },

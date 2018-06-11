@@ -86,49 +86,78 @@ class TestPageState extends State<Test> {
       constraints: const BoxConstraints.expand(),
       child: new Column(
         children: <Widget>[
-          new Container(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
-//            child: new Image.asset(
-//              'images/logo_julo_blue.png',
-//              height: 80.0,
-//            ),
-          ),
-          new Text(
-            "JULO MINI",
-            style: new TextStyle(color: Colors.lightBlue, fontSize: 24.0),
-          ),
           new Stack(
             children: <Widget>[
               new Image.asset(
-                'images/product_slide_mini_bg.png',
-                fit: BoxFit.fitWidth,
-                alignment: Alignment.center,
+                'images/background_pattern_dark.png',
               ),
-              new Align(
-                  alignment: Alignment.topRight,
-                  child: new Padding(
-                      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 20.0, 0.0),
-                      child: new Image.asset(
-                        'images/product_slide_sun.png',
-                        width: 80.0,
-                        height: 200.0,
+              new Column(
+                children: <Widget>[
+                  new Padding(padding: const EdgeInsets.all(30.0)),
+                  new Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new Text(
+                        "JULO",
+                        textAlign: TextAlign.center,
+                        style: new TextStyle(
+                            color: Colors.lightBlue,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      new Text(
+                        " Mini",
+                        textAlign: TextAlign.center,
+                        style: new TextStyle(
+                            color: Colors.lightBlue, fontSize: 24.0),
+                      ),
+                    ],
+                  ),
+                  new Padding(padding: const EdgeInsets.all(30.0)),
+                  new Stack(
+                    children: <Widget>[
+                      new Image.asset(
+                        'images/product_slide_mini_bg.png',
+                        fit: BoxFit.fitWidth,
                         alignment: Alignment.center,
-                      ))),
-              new Center(
-                child: new Image.asset(
-                  'images/product_slide_mini_front.png',
-                  alignment: Alignment.center,
-                ),
-              )
+                      ),
+                      new Align(
+                          alignment: Alignment.topRight,
+                          child: new Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                  0.0, 0.0, 20.0, 0.0),
+                              child: new Image.asset(
+                                'images/product_slide_sun.png',
+                                width: 80.0,
+                                height: 200.0,
+                                alignment: Alignment.center,
+                              ))),
+                      new Center(
+                        child: new Image.asset(
+                          'images/product_slide_mini_front.png',
+                          alignment: Alignment.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                  new Padding(
+                    padding: const EdgeInsets.fromLTRB(40.0, 20.0, 40.0, 20.0),
+                    child: new Text(
+                      "Pinjaman cepat Rp 1.000.000 dengan masa pengembalian "
+                          "1 Bulan. Solusi kebutuhdan dana tidak terduga.",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 12.0,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ],
-          )
+          ),
         ],
       ),
-//      child: new Image.asset(
-//        'images/logo_julo_blue.png',
-//        height: 80.0,
-//        alignment: Alignment.center,
-//      ),
     ),
     new ConstrainedBox(
       constraints: const BoxConstraints.expand(),
@@ -150,62 +179,99 @@ class TestPageState extends State<Test> {
           gradient: new LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
-        stops: [0.1, 0.5, 0.7, 0.9],
+        stops: [0.1, 0.3, 0.4, 0.5, 0.9],
         colors: [
           // Colors are easy thanks to Flutter's
           // Colors class.
           Colors.white,
-          Colors.white,
-          Colors.white,
+          Colors.white70,
+          Colors.white70,
+          Colors.white70,
           const Color(0xFF1593B6),
         ],
       )),
       child: new IconTheme(
           data: new IconThemeData(color: _kArrowColor),
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Image.asset(
-                'images/logo_julo_blue.png',
-                height: 80.0,
-                alignment: Alignment.center,
-              ),
-              new Container(
-                child: new Stack(
-                  children: <Widget>[
-                    new PageView.builder(
-                      physics: new AlwaysScrollableScrollPhysics(),
-                      controller: _controller,
-                      itemBuilder: (BuildContext context, int index) {
-                        return _pages[index % _pages.length];
-                      },
-                    ),
-                    new Positioned(
-                      bottom: 0.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: new Container(
-                        color: Colors.grey[800].withOpacity(0.5),
-                        padding: const EdgeInsets.all(20.0),
-                        child: new Center(
-                          child: new DotsIndicator(
-                            controller: _controller,
-                            itemCount: _pages.length,
-                            onPageSelected: (int page) {
-                              _controller.animateToPage(
-                                page,
-                                duration: _kDuration,
-                                curve: _kCurve,
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+          child: new Container(
+            child: new Column(
+              children: <Widget>[
+                new Padding(padding: const EdgeInsets.all(30.0)),
+                new Image.asset(
+                  'images/logo_julo_blue.png',
+                  height: 80.0,
+                  alignment: Alignment.center,
                 ),
-              )
-            ],
+                new Expanded(
+                  child: new Stack(
+                    children: <Widget>[
+                      new PageView.builder(
+                        physics: new AlwaysScrollableScrollPhysics(),
+                        controller: _controller,
+                        itemBuilder: (BuildContext context, int index) {
+                          return _pages[index % _pages.length];
+                        },
+                      ),
+//                      new Positioned(
+//                        bottom: 0.0,
+//                        left: 0.0,
+//                        right: 0.0,
+//                        child: new Container(
+//                          color: Colors.grey[800].withOpacity(0.5),
+//                          padding: const EdgeInsets.all(20.0),
+//                          child: new Center(
+//                            child: new DotsIndicator(
+//                              controller: _controller,
+//                              itemCount: _pages.length,
+//                              onPageSelected: (int page) {
+//                                _controller.animateToPage(
+//                                  page,
+//                                  duration: _kDuration,
+//                                  curve: _kCurve,
+//                                );
+//                              },
+//                            ),
+//                          ),
+//                        ),
+//                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+
+//                child: new Stack(
+//                  children: <Widget>[
+//                    new PageView.builder(
+//                      physics: new AlwaysScrollableScrollPhysics(),
+//                      controller: _controller,
+//                      itemBuilder: (BuildContext context, int index) {
+//                        return _pages[index % _pages.length];
+//                      },
+//                    ),
+//                    new Positioned(
+//                      bottom: 0.0,
+//                      left: 0.0,
+//                      right: 0.0,
+//                      child: new Container(
+//                        color: Colors.grey[800].withOpacity(0.5),
+//                        padding: const EdgeInsets.all(20.0),
+//                        child: new Center(
+//                          child: new DotsIndicator(
+//                            controller: _controller,
+//                            itemCount: _pages.length,
+//                            onPageSelected: (int page) {
+//                              _controller.animateToPage(
+//                                page,
+//                                duration: _kDuration,
+//                                curve: _kCurve,
+//                              );
+//                            },
+//                          ),
+//                        ),
+//                      ),
+//                    ),
+//                  ],
+//                ),
           )),
     ));
   }
